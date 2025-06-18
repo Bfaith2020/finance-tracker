@@ -4,6 +4,8 @@ import {
   LuWalletMinimal,
   LuLogOut,
 } from "react-icons/lu";
+import { FaRegListAlt } from "react-icons/fa";
+import { FaBullseye } from "react-icons/fa6";
 
 
 export const SIDE_MENU_DATA = [
@@ -25,7 +27,18 @@ export const SIDE_MENU_DATA = [
     icon: LuHandCoins,
     path: "/expense",
   },
-  
+  {
+    id: "04",
+    label: "Categories",
+    icon: FaRegListAlt,
+    path: "/categories",
+  },
+  {
+    id: "05",
+    label: "Goals",
+    icon: FaBullseye,
+    path: "/goals",
+  },
   {
     id: "06",
     label: "Logout",

@@ -6,6 +6,7 @@ const ExpenseSchema = new mongoose.Schema({
   category: { type: String, required: true }, // Example: Food, Rent, Groceries
   amount: { type: Number, required: true },
   date: { type: Date, default: Date.now },
+  notes: { type: String, default: "" },
 }, { timestamps: true });
 
 module.exports = mongoose.model("Expense", ExpenseSchema);

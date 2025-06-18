@@ -26,4 +26,15 @@ export const API_PATHS = {
   IMAGE: {
     UPLOAD_IMAGE: "/api/v1/auth/upload-image",
   },
+  CATEGORIES: {
+    GET: "/api/v1/categories",
+    ADD: "/api/v1/categories",
+    DELETE: (id) => `/api/v1/categories/${id}`,
+  },
+  GOALS: {
+    GET: "/api/v1/goals",
+    ADD: "/api/v1/goals",
+    UPDATE: (id) => `/api/v1/goals/${id}`,
+    DELETE: (id) => `/api/v1/goals/${id}`,
+  },
 };

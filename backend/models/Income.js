@@ -6,6 +6,7 @@ const IncomeSchema = new mongoose.Schema({
   source: { type: String, required: true }, // Example: Salary, Freelance, etc.
   amount: { type: Number, required: true },
   date: { type: Date, default: Date.now },
+  notes: { type: String, default: "" },
 }, { timestamps: true });
 
 module.exports = mongoose.model("Income", IncomeSchema);
