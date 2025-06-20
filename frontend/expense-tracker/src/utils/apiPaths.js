@@ -37,4 +37,10 @@ export const API_PATHS = {
     UPDATE: (id) => `/api/v1/goals/${id}`,
     DELETE: (id) => `/api/v1/goals/${id}`,
   },
+  RECURRING_PAYMENTS: {
+    GET_ALL: "/api/v1/recurring-payments",
+    ADD: "/api/v1/recurring-payments",
+    DELETE: (id) => `/api/v1/recurring-payments/${id}`,
+    RENEGOTIATE: "/api/v1/recurring-payments/renegotiate",
+  },
 };

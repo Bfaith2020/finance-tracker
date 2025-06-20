@@ -10,6 +10,7 @@ const dashboardRoutes = require("./routes/dashboardRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
 const goalRoutes = require("./routes/goalRoutes");
 const transactionRoutes = require("./routes/transactionRoutes");
+const recurringPaymentRoutes = require("./routes/recurringPaymentRoutes");
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use("/api/v1/dashboard", dashboardRoutes);
 app.use("/api/v1/categories", categoryRoutes);
 app.use("/api/v1/goals", goalRoutes);
 app.use("/api/v1/transactions", transactionRoutes);
+app.use("/api/v1/recurring-payments", recurringPaymentRoutes);
 
 // Serve uploads folder
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));

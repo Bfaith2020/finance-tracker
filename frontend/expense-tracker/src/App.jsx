@@ -8,13 +8,13 @@ import React from "react";
 import LoginForm from "./pages/Auth/LoginForm";
 import SignUpForm from "./pages/Auth/SignUpForm";
 import UserProvider from "./context/UserContext";
-
 import { Toaster } from "react-hot-toast";
 import Home from "./pages/Dashboard/Home";
 import Income from "./pages/Dashboard/Income";
 import Expense from "./pages/Dashboard/Expense";
 import CategoriesPage from "./pages/Dashboard/Categories";
 import GoalsPage from "./pages/Dashboard/Goals";
+import RecurringPayments from "./pages/Dashboard/Subscriptions";
 
 const App = () => {
   return (
@@ -26,6 +26,7 @@ const App = () => {
             <Route path="/login" exact element={<LoginForm />} />
             <Route path="/signUp" exact element={<SignUpForm />} />
             <Route path="/dashboard" exact element={<Home />} />
+            <Route path="/recurring-payments" exact element={<RecurringPayments />} />
             <Route path="/income" exact element={<Income />} />
             <Route path="/expense" exact element={<Expense />} />
             <Route path="/categories" exact element={<CategoriesPage />} />

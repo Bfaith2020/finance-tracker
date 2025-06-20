@@ -10,8 +10,7 @@ const Input = ({ label, value, onChange, placeholder, type }) => {
 
   return (
     <div>
-      <label className="text-[13px] text-slate-800">{label}</label>
-
+      <label className="text-[13px] text-[var(--color-slate)]">{label}</label>
       <div className="input-box">
         <input
           type={type == 'password' ? showPassword ? 'text' : 'password' : type}
@@ -44,3 +43,4 @@ const Input = ({ label, value, onChange, placeholder, type }) => {
 };
 
 export default Input;
+

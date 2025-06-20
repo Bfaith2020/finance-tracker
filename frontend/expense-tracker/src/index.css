@@ -1,47 +1,62 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
-@theme {
+:root {
   --font-display: "Poppins", "sans-serif";
-  --breakpoint-3xl: 1920px;
-  --color-primary: #875cf5;
+  /* Use only purple or green for the main accent, not both */
+  --color-primary: #7b47ff; /* Purple as main accent */
+  --color-primary-end: #b274ff;
+  --color-background: #f7f8fc;
+  --color-accent: #7b47ff;
+  --color-accent-2: #b274ff;
+  --color-accent-pink: #ff8ebf;
+  --color-accent-blue: #5ac8fa;
+  --color-accent-red: #ff5b5b;
+  --color-accent-orange: #ffa048;
+  --color-accent-purple: #bd75f8;
+  --color-card: #ffffff;
+  --color-card-alt: #f7f8fc;
+  --color-border: #e0e0e0;
+  --color-text: #3a3a3a;
+  --color-text-secondary: #5f5f5f;
+  --color-danger: #ff5b5b;
+  --color-shadow: 0 4px 24px 0 rgba(123, 71, 255, 0.08);
 }
 
-@layer base {
-  html {
-    font-family: var(--font-display);
-  }
-
-  body {
-    background-color: #fcfbfc;
-    overflow-x: hidden;
-  }
-}
-
-.recharts-bar-rectangle:hover {
-  fill: rgba(255, 255, 0, 0.2) !important; 
-}
-
-.input-box {
-  @apply w-full flex justify-between gap-3 text-sm text-black bg-slate-100 rounded px-4 py-3 mb-4 mt-3 border border-slate-200 outline-none;
-}
-
-.btn-primary {
-  @apply w-full text-sm font-medium text-white bg-violet-500 shadow-lg shadow-purple-600/5 p-[10px] rounded-md my-1 hover:bg-purple-600/15 hover:text-purple-600;
+/* Ensure all elements inherit variables and use them */
+body {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-end) 100%);
+  min-height: 100vh;
+  color: var(--color-text);
+  font-family: var(--font-display), sans-serif;
 }
 
 .card {
-  @apply bg-white p-6 rounded-2xl shadow-md shadow-gray-100 border border-gray-200/50;
+  background: var(--color-card);
+  border-radius: 1.5rem;
+  box-shadow: var(--color-shadow);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
 }
 
-.card-btn {
-  @apply flex items-center gap-3 text-[12px] font-medium text-gray-700 hover:text-purple-500 bg-gray-50 hover:bg-purple-50 px-4 py-1.5 rounded-lg border border-gray-200/50 cursor-pointer;
+.btn-primary {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-end));
+  color: #fff;
+  border-radius: 1rem;
+  font-weight: 600;
+  box-shadow: var(--color-shadow);
 }
 
-.add-btn {
-  @apply flex items-center gap-1.5 text-xs md:text-sm font-medium text-purple-600 whitespace-nowrap bg-purple-50 border border-purple-100 rounded-lg px-4 py-2 cursor-pointer;
+.input-box {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  border-radius: 1rem;
 }
 
-.add-btn-fill {
-  @apply text-white bg-primary
-}
+/* Accent utility classes */
+.accent-red { color: var(--color-accent-red); }
+.accent-orange { color: var(--color-accent-orange); }
+.accent-pink { color: var(--color-accent-pink); }
+.accent-purple { color: var(--color-accent-purple); }
+.accent-blue { color: var(--color-accent-blue); }

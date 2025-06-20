@@ -52,8 +52,11 @@ const SideMenu = ({ activeMenu }) => {
     }
   };
 
+  // Remove Categories from menu
+  const menuItems = SIDE_MENU_DATA.filter(item => item.label !== "Categories");
+
   return (
-    <div className="w-64 h-[calc(100vh-61px)] bg-white border-r border-gray-200/50 p-5 sticky top-[61px] z-20">
+    <div className="w-64 h-[calc(100vh-61px)] bg-[var(--color-card)] border-r border-[var(--color-border)] p-5 sticky top-[61px] z-20">
       <div className="flex flex-col items-center justify-center gap-3 mt-3 mb-7">
         <input
           type="file"
@@ -67,11 +70,11 @@ const SideMenu = ({ activeMenu }) => {
             <img
               src={user?.profileImageUrl || ""}
               alt="Profile Image"
-              className="w-20 h-20 bg-slate-400 rounded-full object-cover"
+              className="w-24 h-24 bg-[var(--color-card-alt)] rounded-full object-cover border-4 border-[var(--color-primary)]/20 shadow"
             />
             <button
               type="button"
-              className="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full absolute -bottom-1 -right-1"
+              className="w-8 h-8 flex items-center justify-center bg-[var(--color-primary)] text-white rounded-full absolute -bottom-1 -right-1 shadow"
               onClick={() => inputRef.current.click()}
               disabled={uploading}
               title="Change Profile Picture"
@@ -83,13 +86,13 @@ const SideMenu = ({ activeMenu }) => {
           <div className="relative">
             <CharAvatar
               fullName={user?.fullName}
-              width="w-20"
-              height="h-20"
-              style="text-xl"
+              width="w-24"
+              height="h-24"
+              style="text-2xl"
             />
             <button
               type="button"
-              className="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full absolute -bottom-1 -right-1"
+              className="w-8 h-8 flex items-center justify-center bg-[var(--color-primary)] text-white rounded-full absolute -bottom-1 -right-1 shadow"
               onClick={() => inputRef.current.click()}
               disabled={uploading}
               title="Add Profile Picture"
@@ -99,25 +102,48 @@ const SideMenu = ({ activeMenu }) => {
           </div>
         )}
 
-        <h5 className="text-gray-950 font-medium leading-6">
+        <h5 className="text-[var(--color-text)] font-semibold leading-6">
           {user.fullName || ""}
         </h5>
       </div>
-
-      {SIDE_MENU_DATA.map((item, index) => (
-        <button
-          key={`menu_${index}`}
-          className={`w-full flex items-center gap-4 text-[15px] ${
-            activeMenu == item.label ? "text-white bg-primary" : ""
-          } py-3 px-6 rounded-lg mb-3`}
-          onClick={() => handleClick(item.path)}
-        >
-          <item.icon className="text-xl" />
-          {item.label}
-        </button>
-      ))}
+      {/* Sidebar menu items */}
+      <div className="mt-8">
+        {menuItems.map(item => {
+          if (item.label === "Logout") {
+            return (
+              <button
+                key={item.label}
+                className={`w-full flex items-center gap-3 text-[13px] px-3 py-2 rounded-md mb-2 ${
+                  activeMenu == item.label
+                    ? "text-white bg-[var(--color-primary)]"
+                    : "text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10"
+                }`}
+                onClick={handelLogout}
+              >
+                <item.icon className="text-lg" />
+                {item.label}
+              </button>
+            );
+          }
+          return (
+            <button
+              key={item.label}
+              className={`w-full flex items-center gap-3 text-[13px] px-3 py-2 rounded-md mb-2 ${
+                activeMenu == item.label
+                  ? "text-white bg-[var(--color-primary)]"
+                  : "text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10"
+              }`}
+              onClick={() => navigate(item.path)}
+            >
+              <item.icon className="text-lg" />
+              {item.label}
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 };
+
 
 export default SideMenu;
