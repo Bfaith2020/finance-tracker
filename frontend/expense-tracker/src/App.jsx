@@ -16,6 +16,7 @@ import CategoriesPage from "./pages/Dashboard/Categories";
 import GoalsPage from "./pages/Dashboard/Goals";
 import RecurringPayments from "./pages/Dashboard/Subscriptions";
 import Welcome from "./pages/Welcome";
+import LegalTips from "./pages/LegalTips";
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
             <Route path="/expense" exact element={<Expense />} />
             <Route path="/categories" exact element={<CategoriesPage />} />
             <Route path="/goals" exact element={<GoalsPage />} />
+            <Route path="/legal-tips" element={<LegalTips />} />
           </Routes>
         </Router>
 
