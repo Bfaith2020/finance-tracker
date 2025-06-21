@@ -15,7 +15,14 @@ const AddExpenseForm = ({ onAddExpense }) => {
   const handleChange = (key, value) => setIncome({ ...income, [key]: value });
 
   return (
-    <div>
+    <div
+      style={{
+        background: "var(--color-card)",
+        borderRadius: "1.5rem",
+        boxShadow: "var(--color-shadow)",
+        padding: "2rem",
+      }}
+    >
       <EmojiPickerPopup
         icon={income.icon}
         onSelect={(selectedIcon) => handleChange("icon", selectedIcon)}

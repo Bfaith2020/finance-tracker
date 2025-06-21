@@ -60,3 +60,8 @@ body {
 .accent-pink { color: var(--color-accent-pink); }
 .accent-purple { color: var(--color-accent-purple); }
 .accent-blue { color: var(--color-accent-blue); }
+
+@keyframes slideInTip {
+  from { transform: translateX(-100vw); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}

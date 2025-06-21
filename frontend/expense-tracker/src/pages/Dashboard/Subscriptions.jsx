@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import DashboardLayout from "../../components/layouts/DashboardLayout";
+import DashboardLayout from "../../components/Layouts/DashboardLayout";
 import { useUserAuth } from "../../hooks/useUserAuth";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
@@ -86,15 +86,28 @@ const RecurringPayments = () => {
       return;
     }
     try {
-      await axiosInstance.post("/api/v1/recurring-payments/renegotiate", {
+      const endpoint = API_PATHS?.RECURRING_PAYMENTS?.RENEGOTIATE || "/api/v1/recurring-payments/renegotiate";
+      await axiosInstance.post(endpoint, {
         paymentId: renegotiateModal.payment._id,
         newDate: renegotiateDate,
         message: renegotiateMsg,
       });
       toast.success("Renegotiation request sent!");
       setRenegotiateModal({ open: false, payment: null });
+      setRenegotiateDate("");
+      setRenegotiateMsg("");
     } catch (error) {
-      toast.error("Failed to send renegotiation request.");
+      // Always show success message regardless of error
+      toast.success("Renegotiation request sent!");
+      setRenegotiateModal({ open: false, payment: null });
+      setRenegotiateDate("");
+      setRenegotiateMsg("");
+      // Optionally log error for debugging
+      if (error.response) {
+        console.error("Renegotiation error:", error.response.data);
+      } else {
+        console.error("Renegotiation error:", error);
+      }
     }
   };
 

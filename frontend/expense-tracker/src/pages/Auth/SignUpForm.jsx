@@ -75,14 +75,24 @@ const SignUpForm = () => {
   };
 
   return (
-    <AuthLayout>
-      <div className="lg:w-[100%] h-auto md:h-full mt-10 md:mt-0 flex flex-col justify-center">
-        <h3 className="text-xl font-semibold text-black">Create an Account</h3>
-        <p className="text-xs text-slate-700 mt-[5px] mb-6">
-          Join us today by entering your details below.
-        </p>
-
-        <form onSubmit={handleSignUp}>
+    <div className="min-h-screen flex items-center justify-center bg-[var(--color-background)]">
+      <div
+        className="w-full max-w-lg p-8 md:p-10 rounded-2xl shadow-lg border"
+        style={{
+          background: "var(--color-card)",
+          borderColor: "var(--color-border)",
+          boxShadow: "var(--color-shadow)",
+        }}
+      >
+        <div className="mb-2 text-center">
+          <h3 className="text-2xl font-bold mb-1" style={{ color: "var(--color-primary)" }}>
+            Create an Account
+          </h3>
+          <p className="text-xs" style={{ color: "var(--color-text-secondary)" }}>
+            Join us today by entering your details below.
+          </p>
+        </div>
+        <form onSubmit={handleSignUp} className="flex flex-col gap-4">
           <ProfilePhotoSelector image={profilePic} setImage={setProfilePic} />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -113,21 +123,37 @@ const SignUpForm = () => {
             </div>
           </div>
 
-          {error && <p className="text-red-500 text-xs pb-2.5">{error}</p>}
+          {error && (
+            <p className="text-xs pb-2.5" style={{ color: "var(--color-danger)" }}>
+              {error}
+            </p>
+          )}
 
-          <button type="submit" className="btn-primary">
+          <button
+            type="submit"
+            className="w-full py-2 mt-2 text-base font-semibold rounded-xl"
+            style={{
+              background: "linear-gradient(90deg, var(--color-primary), var(--color-primary-end))",
+              color: "#fff",
+              boxShadow: "var(--color-shadow)",
+            }}
+          >
             SIGN UP
           </button>
 
-          <p className="text-[13px] text-slate-800 mt-3">
+          <p className="text-[13px] mt-3 text-center" style={{ color: "var(--color-text-secondary)" }}>
             Already have an account?{" "}
-            <Link className="font-medium text-primary underline" to="/login">
+            <Link
+              className="font-medium underline"
+              to="/login"
+              style={{ color: "var(--color-primary)" }}
+            >
               Login
             </Link>
           </p>
         </form>
       </div>
-    </AuthLayout>
+    </div>
   );
 };
 

@@ -54,14 +54,24 @@ const LoginForm = () => {
   };
 
   return (
-    <AuthLayout>
-      <div className="lg:w-[70%] h-3/4 md:h-full flex flex-col justify-center">
-        <h3 className="text-xl font-semibold text-black">Welcome Back</h3>
-        <p className="text-xs text-slate-700 mt-[5px] mb-6">
-          Please enter your details to log in
-        </p>
-
-        <form onSubmit={handleLogin}>
+    <div className="min-h-screen flex items-center justify-center bg-[var(--color-background)]">
+      <div
+        className="w-full max-w-md p-8 md:p-10 rounded-2xl shadow-lg border"
+        style={{
+          background: "var(--color-card)",
+          borderColor: "var(--color-border)",
+          boxShadow: "var(--color-shadow)",
+        }}
+      >
+        <div className="mb-2 text-center">
+          <h3 className="text-2xl font-bold mb-1" style={{ color: "var(--color-primary)" }}>
+            Welcome Back
+          </h3>
+          <p className="text-xs" style={{ color: "var(--color-text-secondary)" }}>
+            Please enter your details to log in
+          </p>
+        </div>
+        <form onSubmit={handleLogin} className="flex flex-col gap-4">
           <Input
             value={email}
             onChange={({ target }) => setEmail(target.value)}
@@ -78,21 +88,37 @@ const LoginForm = () => {
             type="password"
           />
 
-          {error && <p className="text-red-500 text-xs pb-2.5">{error}</p>}
+          {error && (
+            <p className="text-xs pb-2.5" style={{ color: "var(--color-danger)" }}>
+              {error}
+            </p>
+          )}
 
-          <button type="submit" className="btn-primary">
+          <button
+            type="submit"
+            className="w-full py-2 mt-2 text-base font-semibold rounded-xl"
+            style={{
+              background: "linear-gradient(90deg, var(--color-primary), var(--color-primary-end))",
+              color: "#fff",
+              boxShadow: "var(--color-shadow)",
+            }}
+          >
             LOGIN
           </button>
 
-          <p className="text-[13px] text-slate-800 mt-3">
+          <p className="text-[13px] mt-3 text-center" style={{ color: "var(--color-text-secondary)" }}>
             Don’t have an account?{" "}
-            <Link className="font-medium text-primary underline" to="/signup">
+            <Link
+              className="font-medium underline"
+              to="/signup"
+              style={{ color: "var(--color-primary)" }}
+            >
               SignUp
             </Link>
           </p>
         </form>
       </div>
-    </AuthLayout>
+    </div>
   );
 };
 

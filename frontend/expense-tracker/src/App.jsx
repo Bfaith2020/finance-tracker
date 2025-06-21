@@ -15,6 +15,7 @@ import Expense from "./pages/Dashboard/Expense";
 import CategoriesPage from "./pages/Dashboard/Categories";
 import GoalsPage from "./pages/Dashboard/Goals";
 import RecurringPayments from "./pages/Dashboard/Subscriptions";
+import Welcome from "./pages/Welcome";
 
 const App = () => {
   return (
@@ -22,7 +23,7 @@ const App = () => {
       <UserProvider>
         <Router>
           <Routes>
-            <Route path="/" element={<Root />} />
+            <Route path="/" element={<Welcome />} />
             <Route path="/login" exact element={<LoginForm />} />
             <Route path="/signUp" exact element={<SignUpForm />} />
             <Route path="/dashboard" exact element={<Home />} />

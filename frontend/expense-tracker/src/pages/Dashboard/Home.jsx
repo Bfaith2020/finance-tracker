@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
-import DashboardLayout from "../../components/layouts/DashboardLayout";
+import DashboardLayout from "../../components/Layouts/DashboardLayout";
 
 import { LuHandCoins, LuWalletMinimal } from "react-icons/lu";
 import { IoMdCard } from "react-icons/io";
@@ -17,11 +17,26 @@ import Last30DaysExpenses from "../../components/Dashboard/Last30DaysExpenses";
 import RecentIncome from "../../components/Dashboard/RecentIncome";
 import RecentIncomeWithChart from "../../components/Dashboard/RecentIncomeWithChart";
 
+const TIPS_QUOTES = [
+  "A budget is like telling your money where to go instead of wondering where it went. – Dave Ramsey",
+  "Do not save what is left after spending, but spend what is left after saving. – Warren Buffett",
+  "It’s not your salary that makes you rich, it’s your spending habits.",
+  "The best time to plant a tree was 20 years ago. The second best time is now.",
+  "Beware of little expenses; a small leak will sink a great ship. – Benjamin Franklin",
+  "Don’t watch the clock; do what it does. Keep going.",
+  "Financial freedom is available to those who learn about it and work for it.",
+  "Success is the sum of small efforts, repeated day in and day out.",
+  "Save money and money will save you.",
+  "An investment in knowledge pays the best interest. – Benjamin Franklin"
+];
+
 const Home = () => {
   useUserAuth();
   const navigate = useNavigate();
   const [dashboardData, setDashboardData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [tip, setTip] = useState("");
+  const [showTip, setShowTip] = useState(false);
 
   const fetchDashboardData = async () => {
     if (loading) return;
@@ -47,6 +62,13 @@ const Home = () => {
     fetchDashboardData();
 
     return () => {};
+  }, []);
+
+  useEffect(() => {
+    setTip(TIPS_QUOTES[Math.floor(Math.random() * TIPS_QUOTES.length)]);
+    setShowTip(false);
+    const timer = setTimeout(() => setShowTip(true), 0);
+    return () => clearTimeout(timer);
   }, []);
 
   // Compute relevant spending alerts
@@ -99,7 +121,7 @@ const Home = () => {
   }, [dashboardData]);
 
   return (
-    <DashboardLayout activeMenu="Dashboard" spendingAlerts={spendingAlerts}>
+    <DashboardLayout activeMenu="Dashboard" spendingAlerts={spendingAlerts} tip={showTip ? tip : ""}>
       <div className="my-5 mx-auto">
         {/* Only one main heading, no duplicate headings in cards */}
         <h1 className="text-2xl md:text-3xl font-bold text-[var(--color-primary)] mb-8 px-2">Dashboard Overview</h1>
@@ -131,7 +153,7 @@ const Home = () => {
               onSeeMore={() => navigate("/expense")}
             />
           </div>
-          <div className="card bg-[var(--color-card)] border-[var(--color-border)] overflow-hidden">
+          <div className="card bg-[var(--color-card)] border-[var,--color-border)] overflow-hidden">
             {/* No extra heading here */}
             <FinanceOverview
               totalBalance={dashboardData?.totalBalance || 0}
