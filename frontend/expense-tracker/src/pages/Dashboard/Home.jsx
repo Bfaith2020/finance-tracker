@@ -6,7 +6,7 @@ import { IoMdCard } from "react-icons/io";
 import { motion } from "framer-motion";
 
 import { useNavigate } from "react-router-dom";
-import InfoCard from "../../components/cards/InfoCard";
+import InfoCard from "../../components/Cards/InfoCard";
 import { useUserAuth } from "../../hooks/useUserAuth";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
