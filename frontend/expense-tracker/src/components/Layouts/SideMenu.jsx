@@ -18,18 +18,17 @@ const SideMenu = ({ activeMenu }) => {
   const [uploading, setUploading] = useState(false);
 
   const handleClick = (route) => {
-    if (route === "logout") {
+    if (route === "/logout" || route === "logout") {
       handelLogout();
       return;
     }
-
     navigate(route);
   };
 
   const handelLogout = () => {
     localStorage.clear();
     clearUser();
-    navigate("/login");
+    window.location.replace("/"); // Force full redirect to homepage
   };
 
   // Handle profile image change
@@ -39,14 +38,24 @@ const SideMenu = ({ activeMenu }) => {
     setUploading(true);
     try {
       const imgUploadRes = await uploadImage(file);
-      const profileImageUrl = imgUploadRes.imageUrl || "";
+      const profileImageUrl = imgUploadRes?.imageUrl || "";
+      if (!profileImageUrl) {
+        toast.error("Image upload failed. Please try again.");
+        setUploading(false);
+        return;
+      }
       // Update user profile on backend (use PATCH)
       await axiosInstance.patch(API_PATHS.AUTH.UPDATE_PROFILE_IMAGE, { profileImageUrl });
       // Update user context
       updateUser({ ...user, profileImageUrl });
       toast.success("Profile picture updated!");
     } catch (err) {
-      toast.error("Failed to update profile picture.");
+      if (err.response && err.response.data && err.response.data.message) {
+        toast.error("Failed to update profile picture: " + err.response.data.message);
+      } else {
+        toast.error("Failed to update profile picture.");
+      }
+      console.error("Profile image update error:", err);
     } finally {
       setUploading(false);
     }
@@ -133,7 +142,7 @@ const SideMenu = ({ activeMenu }) => {
                     ? "text-white bg-[var(--color-primary)]"
                     : "text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10"
                 }`}
-                onClick={handelLogout}
+                onClick={() => handleClick("logout")}
               >
                 <item.icon className="text-lg" />
                 {item.label}

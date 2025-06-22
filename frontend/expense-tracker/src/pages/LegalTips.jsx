@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { LuGavel } from "react-icons/lu";
 import jsPDF from "jspdf";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const legalTips = [
 	{
@@ -115,6 +117,7 @@ const LegalTips = () => {
 		purpose: "",
 		prepayment: "",
 	});
+	const navigate = useNavigate();
 
 	const toggleIndex = (index) => {
 		setActiveIndex(activeIndex === index ? null : index);
@@ -125,7 +128,7 @@ const LegalTips = () => {
 	};
 
 	return (
-		<div style={{ background: "#f0fdf4", minHeight: "100vh" }}>
+		<div style={{ background: "#f0fdf4", minHeight: "100vh", position: "relative" }}>
 			<div className="max-w-4xl mx-auto px-0 py-10">
 				<h2
 					className="text-3xl font-bold mb-6 text-center flex items-center justify-center gap-2"
@@ -186,7 +189,7 @@ const LegalTips = () => {
 						</div>
 					))}
 				</div>
-				<div className="space-y-4 mb-10 mt-10">
+				<div className="space-y-4 mb-10 mt-10 flex flex-col items-center">
 					<button
 						className="btn-primary px-6 py-2 rounded-lg font-semibold"
 						onClick={() => setShowLoanForm((v) => !v)}
@@ -243,7 +246,7 @@ const LegalTips = () => {
 									className="input-box w-full"
 									name="amount"
 									value={loanForm.amount}
-									onChange={handleLoanFormChange}
+								 onChange={handleLoanFormChange}
 									type="number"
 									placeholder="Amount"
 								/>
@@ -372,6 +375,21 @@ const LegalTips = () => {
 					)}
 				</div>
 			</div>
+			<span
+				onClick={() => navigate("/dashboard")}
+				style={{
+					position: "fixed",
+					left: 24,
+					bottom: 24,
+					color: "var(--color-primary)",
+					cursor: "pointer",
+					fontWeight: 600,
+					fontSize: "1.1rem",
+					zIndex: 100
+				}}
+			>
+				← Back to Home
+			</span>
 		</div>
 	);
 };
