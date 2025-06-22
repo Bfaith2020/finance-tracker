@@ -1,22 +1,22 @@
 import React, { useEffect, useState, useMemo } from "react";
 import DashboardLayout from "../../components/Layouts/DashboardLayout";
-
-import { LuHandCoins, LuWalletMinimal } from "react-icons/lu";
-import { IoMdCard } from "react-icons/io";
-import { motion } from "framer-motion";
-
-import { useNavigate } from "react-router-dom";
 import InfoCard from "../../components/Cards/InfoCard";
-import { useUserAuth } from "../../hooks/useUserAuth";
-import axiosInstance from "../../utils/axiosInstance";
-import { API_PATHS } from "../../utils/apiPaths";
-import { addThousandsSeparator } from "../../utils/helper";
 import RecentTransactions from "../../components/Dashboard/RecentTransactions";
 import FinanceOverview from "../../components/Dashboard/FinanceOverview";
 import ExpenseTransactions from "../../components/Dashboard/ExpenseTransactions";
 import Last30DaysExpenses from "../../components/Dashboard/Last30DaysExpenses";
 import RecentIncome from "../../components/Dashboard/RecentIncome";
 import RecentIncomeWithChart from "../../components/Dashboard/RecentIncomeWithChart";
+
+import { LuHandCoins, LuWalletMinimal } from "react-icons/lu";
+import { IoMdCard } from "react-icons/io";
+import { motion } from "framer-motion";
+
+import { useNavigate } from "react-router-dom";
+import { useUserAuth } from "../../hooks/useUserAuth";
+import axiosInstance from "../../utils/axiosInstance";
+import { API_PATHS } from "../../utils/apiPaths";
+import { addThousandsSeparator } from "../../utils/helper";
 
 const TIPS_QUOTES = [
   "A budget is like telling your money where to go instead of wondering where it went. – Dave Ramsey",
