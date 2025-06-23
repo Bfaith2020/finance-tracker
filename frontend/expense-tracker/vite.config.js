@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   build: {
     rollupOptions: {
-      external: ['jspdf', 'file-saver-es'],
+      external: [],
     },
   },
 })

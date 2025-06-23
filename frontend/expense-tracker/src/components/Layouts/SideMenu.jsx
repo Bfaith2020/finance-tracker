@@ -6,7 +6,7 @@ import CharAvatar from "../Cards/CharAvatar";
 import uploadImage from "../../utils/uploadImage";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
-import { LuUpload, LuGavel } from "react-icons/lu";
+import { LuUpload } from "react-icons/lu";
 import toast from "react-hot-toast";
 
 const SideMenu = ({ activeMenu }) => {
@@ -64,20 +64,10 @@ const SideMenu = ({ activeMenu }) => {
   // Remove Categories from menu
   const menuItems = SIDE_MENU_DATA.filter(item => item.label !== "Categories");
 
-  // Find index of Goals
-  const goalsIndex = menuItems.findIndex(item => item.label === "Goals");
-  // Insert Legal Tips after Goals
-  const legalTipsItem = {
-    label: "Legal Tips",
-    path: "/legal-tips",
-    icon: (props) => <LuGavel {...props} />
-  };
+  // Remove Legal Tips from menu (do not add it after Goals)
   let finalMenuItems = [...menuItems];
-  if (goalsIndex !== -1) {
-    finalMenuItems.splice(goalsIndex + 1, 0, legalTipsItem);
-  } else {
-    finalMenuItems.push(legalTipsItem);
-  }
+  // If you previously inserted Legal Tips, remove it:
+  finalMenuItems = finalMenuItems.filter(item => item.label !== "Legal Tips");
 
   return (
     <div className="w-64 h-[calc(100vh-61px)] bg-[var(--color-card)] border-r border-[var(--color-border)] p-5 sticky top-[61px] z-20">
@@ -168,6 +158,7 @@ const SideMenu = ({ activeMenu }) => {
     </div>
   );
 };
+
 
 
 export default SideMenu;

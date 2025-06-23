@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+/* import React, { useState } from "react";
 import { LuGavel } from "react-icons/lu";
 import jsPDF from "jspdf";
 import { useNavigate } from "react-router-dom";
@@ -395,3 +395,4 @@ const LegalTips = () => {
 };
 
 export default LegalTips;
+ */
