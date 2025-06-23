@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import AuthLayout from "../../components/Layouts/AuthLayout";
 import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/Inputs/Input";
 import { validateEmail } from "../../utils/helper";
@@ -158,3 +157,4 @@ const SignUpForm = () => {
 };
 
 export default SignUpForm;
+

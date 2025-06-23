@@ -7,7 +7,6 @@ import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
 import IncomeOverview from "../../components/Income/IncomeOverview";
 import IncomeList from "../../components/Income/IncomeList";
-import AddIncomeModal from "../../components/Income/AddIncomeForm";
 import Modal from "../../components/Modal";
 import AddIncomeForm from "../../components/Income/AddIncomeForm";
 import toast from "react-hot-toast";
@@ -175,3 +174,4 @@ const Income = () => {
 };
 
 export default Income;
+

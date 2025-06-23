@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { useUserAuth } from "../../hooks/useUserAuth";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
-import IncomeOverview from "../../components/Expense/ExpenseOverview";
 import ExpenseList from "../../components/Expense/ExpenseList";
 import ExpenseOverview from "../../components/Expense/ExpenseOverview";
 import AddExpenseForm from "../../components/Expense/AddExpenseForm";
@@ -178,3 +177,4 @@ const Expense = () => {
 };
 
 export default Expense;
+

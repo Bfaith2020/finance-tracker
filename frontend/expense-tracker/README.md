@@ -102,11 +102,7 @@ See [`backend/API_DOCUMENTATION.md`](../../backend/API_DOCUMENTATION.md) for det
 
 ---
 
-## Screenshots
 
-<!-- Add screenshots or GIFs of the dashboard, forms, and mobile view here -->
-
----
 
 ## Contributing
 
