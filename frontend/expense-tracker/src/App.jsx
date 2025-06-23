@@ -2,7 +2,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
 } from "react-router-dom";
 import React from "react";
 import LoginForm from "./pages/Auth/LoginForm";
@@ -52,6 +51,7 @@ const App = () => {
   );
 };
 
+
 // Define the Root component to handle the initial redirect
 const Root = () => {
   // Check if token exists in localStorage
@@ -61,7 +61,7 @@ const Root = () => {
   return isAuthenticated ? (
     <Navigate to="/dashboard" />
   ) : (
-    <Navigate to="/login" />
+    <Navigate to="/" />
   );
 };
 
